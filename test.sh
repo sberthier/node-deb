@@ -575,6 +575,8 @@ else
   echo '--------------------------'
   test-extra-files-project
   echo '--------------------------'
+  test-force-node-modules
+  echo '--------------------------'
   test-dog-food
   echo '--------------------------'
   test-upstart-project

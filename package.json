@@ -1,6 +1,6 @@
 {
   "name": "node-deb",
-  "version": "0.6.1",
+  "version": "0.7.1",
   "description": "Debian packaging for Node.js projects",
   "author": "heartsucker <heartsucker@autistici.org>",
   "bin": {
@@ -26,7 +26,8 @@
     "package",
     "packaging",
     "upstart",
-    "systemd"
+    "systemd",
+    "system v"
   ],
   "preferGlobal": true,
   "private": false,
