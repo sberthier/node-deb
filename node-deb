@@ -151,7 +151,7 @@ while [ -n "$1" ]; do
       shift
       ;;
     --dpkg-options)
-      # HELPDOC:  Options to give on dpkg-deb build command (default: 'node_deb.dpkg_optios' then '')
+      # HELPDOC:  Options to give on dpkg-deb build command (default: 'node_deb.dpkg_options' then '')
       zero_check "$value" "$param"
       dpkg_options="$value"
       shift
@@ -1014,7 +1014,7 @@ while [ -n "$1" ]; do
       shift
       ;;
     --dpkg-options)
-      # HELPDOC:  Options to give on dpkg-deb build command (default: 'node_deb.dpkg_optios' then '')
+      # HELPDOC:  Options to give on dpkg-deb build command (default: 'node_deb.dpkg_options' then '')
       zero_check "$value" "$param"
       dpkg_options="$value"
       shift
@@ -1716,7 +1716,7 @@ else
   log_warn 'Unable to find suitable md5 sum program. No md5sums calculated.'
 fi
 
-log_info 'Building Debian package' $dpkg_options
+log_info 'Building Debian package'
 if [[ -z "$output_deb_name" ]]; then
   fakeroot dpkg-deb $dpkg_options --build "$deb_dir" > '/dev/null'
 else
