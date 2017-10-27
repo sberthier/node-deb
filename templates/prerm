@@ -25,3 +25,6 @@ if [[ "$init_type" == 'auto' || "$init_type" == 'systemd' || "$init_type" == 'up
     echo 'Unless these systems were removed since install, no processes have been left running'
   fi
 fi
+
+cd "/usr/share/$service_name/app"
+rm -rf node_modules 2> /dev/null

@@ -793,7 +793,7 @@ copy_node_modules() {
 tar_node_modules() {
   if [ -d "$source_dir/node_modules" ]; then
     log_debug 'Tarring dir: node_modules'
-    tar cf "$deb_dir/usr/share/$package_name/app/node_modules.tar" "$source_dir/node_modules/"
+    tar -P --xform "s|$source_dir/||" -cf "$deb_dir/usr/share/$package_name/app/node_modules.tar" "$source_dir/node_modules/"
   fi
 }
 

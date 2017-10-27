@@ -100,6 +100,8 @@ dependency_install() {
       # pass
       ;;
     tar)
+      echo 'Extracting dependenencies from node_modules.tar'
+      rm -rf node_modules 2> /dev/null
       tar xf node_modules.tar
       ;;
     npm-install)
