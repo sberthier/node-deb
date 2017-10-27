@@ -492,10 +492,10 @@ if [ -z "$install_strategy" ]; then
   fi
 fi
 case $install_strategy in
-  auto|copy|npm-install)
+  auto|copy|tar|npm-install)
     ;;
   *)
-    die "Invalid install strategy. Must be 'auto', 'copy', or 'npm-install'"
+    die "Invalid install strategy. Must be 'auto', 'copy', 'tar', or 'npm-install'"
 esac
 log_debug "The install strategy has been set to: $install_strategy"
 
@@ -790,6 +790,13 @@ copy_node_modules() {
   fi
 }
 
+tar_node_modules() {
+  if [ -d "$source_dir/node_modules" ]; then
+    log_debug 'Tarring dir: node_modules'
+    tar cf "$deb_dir/usr/share/$package_name/app/node_modules.tar" "$source_dir/node_modules/"
+  fi
+}
+
 if [[ "$install_strategy" == 'auto' ]]; then
   if [ -d "$source_dir/node_modules" ]; then
     if hash npm 2> /dev/null; then
@@ -816,6 +823,10 @@ fi
 
 if [[ "$install_strategy" == 'copy' ]]; then
   copy_node_modules
+fi
+
+if [[ "$install_strategy" == 'tar' ]]; then
+  tar_node_modules
 fi
 
 if ! [ -f "$deb_dir/usr/share/$package_name/app/package.json" ]; then
@@ -1355,10 +1366,10 @@ if [ -z "$install_strategy" ]; then
   fi
 fi
 case $install_strategy in
-  auto|copy|npm-install)
+  auto|copy|tar|npm-install)
     ;;
   *)
-    die "Invalid install strategy. Must be 'auto', 'copy', or 'npm-install'"
+    die "Invalid install strategy. Must be 'auto', 'copy', 'tar', or 'npm-install'"
 esac
 log_debug "The install strategy has been set to: $install_strategy"
 
