@@ -103,6 +103,8 @@ dependency_install() {
       echo 'Extracting dependenencies from node_modules.tar'
       rm -rf node_modules 2> /dev/null
       tar xf node_modules.tar
+      echo "Directory 'node_modules' exists. Running 'npm rebuild'"
+      npm rebuild --production
       ;;
     npm-install)
       echo 'Installing dependenencies from NPM'
